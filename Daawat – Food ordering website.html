@@ -2,192 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Daawat – Food delivery</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Daawat</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#FFF9EE;--surface:#fff;--ink:#241D14;--mute:#7A6F60;--line:#EADFC9;--brand:#C8321E;--brand-ink:#fff;--gold:#F2A900;--green:#2E7D4F;--tint:#FFEFC7}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--surface:#221C16;--ink:#F6EBD8;--mute:#A99A84;--line:#3A3027;--brand:#E4533D;--tint:#3A2E14}}
-:root[data-theme="dark"]{--bg:#171310;--surface:#221C16;--ink:#F6EBD8;--mute:#A99A84;--line:#3A3027;--brand:#E4533D;--tint:#3A2E14}
-*{box-sizing:border-box;margin:0}
-html{height:100%}
-body{background:var(--bg);color:var(--ink);font:15px/1.5 'DM Sans',system-ui,sans-serif;min-width:1280px;width:1280px;margin:0 auto;min-height:100%}
-h1,h2,h3,.logo{font-family:'Bricolage Grotesque',Georgia,serif;letter-spacing:-.02em}
-button{font:inherit;cursor:pointer;border:0;color:inherit;background:none}
-header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);height:72px;display:flex;align-items:center;gap:24px;padding:0 40px}
-.logo{font-size:28px;font-weight:800;color:var(--brand);display:flex;gap:8px;align-items:center}
-.loc{padding:8px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-weight:500;white-space:nowrap}
-.loc small{color:var(--mute);display:block;font-size:11px;line-height:1}
-.search{flex:1;position:relative}
-.search input{width:100%;height:44px;border:1px solid var(--line);border-radius:12px;padding:0 16px 0 42px;background:var(--surface);color:var(--ink);font:inherit}
-.search span{position:absolute;left:14px;top:10px}
-.btn{background:var(--brand);color:var(--brand-ink);padding:11px 20px;border-radius:12px;font-weight:700;white-space:nowrap}
-.btn:hover{filter:brightness(1.08)}.btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
-.btn[disabled]{opacity:.45;cursor:not-allowed}
-.hero{margin:32px 40px 0;border-radius:24px;background:var(--brand);color:#fff;display:grid;grid-template-columns:1.2fr 1fr;overflow:hidden;min-height:300px;position:relative}
-.hero .txt{padding:48px}
-.hero h1{font-size:52px;line-height:1.02;font-weight:800;margin-bottom:14px}
-.hero p{font-size:17px;max-width:440px;opacity:.92;margin-bottom:24px}
-.hero .btn{background:var(--gold);color:#241D14}
-.hero .art{background:radial-gradient(circle at 40% 50%,#F2A900 0 38%,transparent 39%),var(--brand);display:flex;align-items:center;justify-content:center;font-size:150px;gap:0}
-.promo{display:inline-block;margin-top:18px;padding:6px 12px;border:1.5px dashed rgba(255,255,255,.7);border-radius:8px;font-weight:700;font-size:13px;margin-left:12px}
-.bar{display:flex;align-items:center;gap:10px;padding:32px 40px 8px}
-.chip{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:500}
-.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.sp{flex:1}
-select{height:40px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);padding:0 10px;font:inherit}
-.veg{display:flex;gap:8px;align-items:center;font-weight:500;cursor:pointer}
-.veg i{width:38px;height:22px;border-radius:99px;background:var(--line);position:relative;transition:.2s}
-.veg i:after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
-.veg.on i{background:var(--green)}.veg.on i:after{left:19px}
-.sec{padding:16px 40px 8px;display:flex;justify-content:space-between;align-items:baseline}
-.sec h2{font-size:28px}.sec span{color:var(--mute)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:12px 40px 56px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(60,35,10,.12)}
-.pic{height:150px;display:flex;align-items:center;justify-content:center;font-size:76px;position:relative}
-.tag{position:absolute;left:12px;top:12px;background:var(--surface);color:var(--ink);font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px}
-.dot{position:absolute;right:12px;top:12px;width:18px;height:18px;border:2px solid var(--green);border-radius:4px;display:grid;place-items:center;background:#fff}
-.dot:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
-.dot.nv{border-color:#B3261E}.dot.nv:after{background:#B3261E}
-.body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
-.body h3{font-size:18px}.body p{color:var(--mute);font-size:13px;flex:1}
-.meta{display:flex;gap:10px;font-size:13px;color:var(--mute);margin-top:4px}
-.meta b{color:var(--green)}
-.row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-.price{font-weight:700;font-size:18px}
-.add{border:1.5px solid var(--brand);color:var(--brand);padding:7px 20px;border-radius:10px;font-weight:700}
-.add:hover{background:var(--brand);color:#fff}
-.qty{display:flex;align-items:center;background:var(--brand);color:#fff;border-radius:10px;font-weight:700}
-.qty button{width:32px;height:34px;font-size:18px}.qty span{min-width:20px;text-align:center}
-.empty{grid-column:1/-1;text-align:center;padding:60px;color:var(--mute)}
-.how{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:0 40px 56px}
-.how div{background:var(--tint);border-radius:18px;padding:24px}.how h3{margin:6px 0 4px}.how p{color:var(--mute)}
-footer{background:var(--ink);color:var(--bg);padding:40px;display:flex;justify-content:space-between}
-footer p{opacity:.7;max-width:420px;margin-top:8px}
-.veil{position:fixed;inset:0;background:rgba(20,12,4,.5);z-index:40;display:none}.veil.on{display:block}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:430px;background:var(--bg);z-index:50;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,.2)}
-.drawer.on{transform:none}
-.dh{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.dh h2{font-size:24px}
-.x{width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line)}
-.items{flex:1;overflow:auto;padding:8px 24px}
-.it{display:flex;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
-.it .e{font-size:34px;width:56px;height:56px;border-radius:12px;display:grid;place-items:center}
-.it div.n{flex:1}.it small{color:var(--mute)}
-.qty.sm{background:var(--surface);color:var(--brand);border:1px solid var(--brand)}
-.bill{padding:18px 24px;border-top:1px solid var(--line);background:var(--surface)}
-.bill div{display:flex;justify-content:space-between;margin-bottom:6px;color:var(--mute)}
-.bill .tot{color:var(--ink);font-weight:700;font-size:18px;margin:10px 0 14px}
-.cp{display:flex;gap:8px;margin-bottom:12px}.cp input{flex:1;height:40px;border:1px solid var(--line);border-radius:10px;padding:0 12px;background:var(--bg);color:var(--ink);font:inherit;text-transform:uppercase}
-.msg{font-size:13px;margin-bottom:8px}
-.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:560px;max-height:90vh;overflow:auto;background:var(--bg);border-radius:22px;z-index:60;padding:32px;display:none}
-.modal.on{display:block}.modal h2{font-size:28px;margin-bottom:16px}
-label{display:block;font-weight:500;margin:12px 0 4px;font-size:14px}
-.modal input,.modal textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface);color:var(--ink);font:inherit}
-.pay{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.pay button{border:1.5px solid var(--line);border-radius:10px;padding:12px;background:var(--surface);font-weight:500}.pay button.on{border-color:var(--brand);background:var(--tint)}
-.steps{margin:20px 0}.st{display:flex;gap:14px;align-items:center;padding:10px 0;color:var(--mute)}
-.st b{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:14px}
-.st.done{color:var(--ink)}.st.done b{background:var(--green);border-color:var(--green);color:#fff}
-.st.cur b{border-color:var(--brand);color:var(--brand)}
-.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,80px);background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:12px;z-index:80;transition:.25s;opacity:0}.toast.on{transform:translate(-50%,0);opacity:1}
-.cnt{background:var(--gold);color:#241D14;border-radius:99px;padding:0 8px;margin-left:6px;font-size:13px}
-</style>
-</head>
-<body>
-<header>
-  <div class="logo"><span>🍛</span>Daawat</div>
-  <button class="loc" onclick="toast('Location picker is a demo')"><small>Deliver to</small>Connaught Place, New Delhi ▾</button>
-  <div class="search"><span>🔍</span><input id="q" placeholder="Search dishes, e.g. paneer, biryani, momos" oninput="state.q=this.value;render()"></div>
-  <button class="btn ghost" onclick="toggleTheme()">Theme</button>
-  <button class="btn" onclick="openCart()">Cart<span class="cnt" id="cnt">0</span></button>
-</header>
-
-<section class="hero">
-  <div class="txt">
-    <h1>Hot food at your door in 30 minutes.</h1>
-    <p>Order from 16 kitchen favourites, from smoky tandoor to street-side chaat. Free delivery above ₹399.</p>
-    <button class="btn" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Browse the menu</button><span class="promo">Use DAAWAT50 for ₹50 off</span>
-  </div>
-  <div class="art">🍲</div>
-</section>
-
-<div class="bar" id="menu">
-  <div id="chips" style="display:flex;gap:10px"></div>
-  <div class="sp"></div>
-  <div class="veg" id="veg" onclick="state.veg=!state.veg;render()"><i></i>Veg only</div>
-  <select onchange="state.sort=this.value;render()"><option value="pop">Most popular</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="rt">Top rated</option></select>
-</div>
-<div class="sec"><h2 id="ttl">All dishes</h2><span id="num"></span></div>
-<div class="grid" id="grid"></div>
-
-<div class="how">
-  <div><h3>Pick your dishes</h3><p>Filter by cuisine, veg preference or search by name.</p></div>
-  <div><h3>Checkout in a minute</h3><p>Add an address, choose UPI, card or cash, then place the order.</p></div>
-  <div><h3>Track it live</h3><p>Follow your order from kitchen to doorstep, step by step.</p></div>
-</div>
-<footer><div><div class="logo" style="color:var(--gold)">🍛 Daawat</div><p>A demo food ordering front end. No real orders, payments or deliveries happen here.</p></div><div><p>© 2026 Daawat Demo<br>Help · Terms · Privacy</p></div></footer>
-
-<div class="veil" id="veil" onclick="closeAll()"></div>
-<aside class="drawer" id="drawer">
-  <div class="dh"><h2>Your cart</h2><button class="x" onclick="closeAll()">✕</button></div>
-  <div class="items" id="items"></div>
-  <div class="bill" id="bill"></div>
-</aside>
-<div class="modal" id="modal"></div>
-<div class="toast" id="toast"></div>
-
+<style>:root{--b:#FFF9EE;--s:#fff;--i:#241D14;--m:#7A6F60;--l:#EADFC9;--r:#C8321E;--t:#FFEFC7;--y:#F2A900;--g:#2E7D4F}*{box-sizing:border-box;margin:0}body{background:var(--b);color:var(--i);font:15px/1.5 'DM Sans',system-ui,sans-serif;width:1280px;margin:0 auto}h1,h2,h3,.logo{font-family:'Bricolage Grotesque',Georgia,serif;letter-spacing:-.02em}button{font:inherit;cursor:pointer;border:0;color:inherit;background:none}header{position:sticky;top:0;z-index:20;background:var(--b);border-bottom:1px solid var(--l);height:72px;display:flex;align-items:center;gap:24px;padding:0 40px}.logo{font-size:28px;font-weight:800;color:var(--r);display:flex;gap:8px;align-items:center}.lo,.sr input,.ch,.x,.py button,select,.cp input,#modal input,#modal textarea{border:1px solid var(--l);background:var(--s);color:var(--i);font:inherit}.lo{padding:8px 14px;border-radius:10px;font-weight:500;white-space:nowrap}.lo small{color:var(--m);display:block;font-size:11px;line-height:1}.sr{flex:1;position:relative}.sr input{width:100%;height:44px;border-radius:12px;padding:0 16px 0 42px}.sr span{position:absolute;left:14px;top:10px}.bt{background:var(--r);color:#fff;padding:11px 20px;border-radius:12px;font-weight:700;white-space:nowrap}.bt.gh{background:var(--s);color:var(--i);border:1px solid var(--l)}.ho{margin:32px 40px 0;border-radius:24px;background:var(--r);color:#fff;display:grid;grid-template-columns:1.2fr 1fr;overflow:hidden;min-height:300px}.tx{padding:48px}.ho h1{font-size:52px;line-height:1.02;font-weight:800;margin-bottom:14px}.ho p{font-size:17px;max-width:440px;opacity:.92;margin-bottom:24px}.ho .bt{background:var(--y);color:#241D14}.ar{background:radial-gradient(circle at 40% 50%,#F2A900 0 38%,transparent 39%),var(--r);display:flex;align-items:center;justify-content:center;font-size:150px}.pr{display:inline-block;margin:18px 0 0 12px;padding:6px 12px;border:1.5px dashed #fffb;border-radius:8px;font-weight:700;font-size:13px}.br{display:flex;align-items:center;gap:10px;padding:32px 40px 8px}.ch{padding:9px 18px;border-radius:999px;font-weight:500}.ch.on{background:var(--i);color:var(--b);border-color:var(--i)}.sp{flex:1}select{height:40px;border-radius:10px;padding:0 10px}.vg{display:flex;gap:8px;align-items:center;font-weight:500;cursor:pointer}.vg i{width:38px;height:22px;border-radius:99px;background:var(--l);position:relative;transition:.2s}.vg i:after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}.vg.on i{background:var(--g)}.vg.on i:after{left:19px}.sc{padding:16px 40px 8px;display:flex;justify-content:space-between;align-items:baseline}.sc h2{font-size:28px}.sc span{color:var(--m)}#grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:12px 40px 56px}.cd{background:var(--s);border:1px solid var(--l);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}.pi{height:150px;display:flex;align-items:center;justify-content:center;font-size:76px;position:relative}.ta{position:absolute;left:12px;top:12px;background:var(--s);color:var(--i);font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px}.dt{position:absolute;right:12px;top:12px;width:18px;height:18px;border:2px solid var(--g);border-radius:4px;display:grid;place-items:center;background:#fff}.dt:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--g)}.dt.nv{border-color:#B3261E}.dt.nv:after{background:#B3261E}.bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}.bd h3{font-size:18px}.bd p{color:var(--m);font-size:13px;flex:1}.me{display:flex;gap:10px;font-size:13px;color:var(--m);margin-top:4px}.me b{color:var(--g)}.rw{display:flex;justify-content:space-between;align-items:center;margin-top:12px}.pe{font-weight:700;font-size:18px}.ab{border:1.5px solid var(--r);color:var(--r);padding:7px 20px;border-radius:10px;font-weight:700}.qy{display:flex;align-items:center;background:var(--r);color:#fff;border-radius:10px;font-weight:700}.qy button{width:32px;height:34px;font-size:18px}.qy span{min-width:20px;text-align:center}.em{grid-column:1/-1;text-align:center;padding:60px;color:var(--m)}footer{background:var(--i);color:var(--b);padding:40px;display:flex;justify-content:space-between}footer p{opacity:.7;max-width:420px;margin-top:8px}#veil{position:fixed;inset:0;background:#140c0480;z-index:40;display:none}#veil.on{display:block}#drawer{position:fixed;top:0;right:0;bottom:0;width:430px;background:var(--b);z-index:50;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-10px 0 30px #0003}#drawer.on{transform:none}.dh{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--l)}.dh h2{font-size:24px}.x{width:36px;height:36px;border-radius:50%}#items{flex:1;overflow:auto;padding:8px 24px}.it{display:flex;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--l)}.it .e{font-size:34px;width:56px;height:56px;border-radius:12px;display:grid;place-items:center}.it div.n{flex:1}.it small{color:var(--m)}.qy.sm{background:var(--s);color:var(--r);border:1px solid var(--r)}#bill{padding:18px 24px;border-top:1px solid var(--l);background:var(--s)}#bill div{display:flex;justify-content:space-between;margin-bottom:6px;color:var(--m)}#bill .tt{color:var(--i);font-weight:700;font-size:18px;margin:10px 0 14px}.cp{display:flex;gap:8px;margin-bottom:12px}.cp input{flex:1;height:40px;border-radius:10px;padding:0 12px;background:var(--b);text-transform:uppercase}#pm{font-size:13px;margin-bottom:8px}#modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:560px;max-height:90vh;overflow:auto;background:var(--b);border-radius:22px;z-index:60;padding:32px;display:none}#modal.on{display:block}#modal h2{font-size:28px;margin-bottom:16px}label{display:block;font-weight:500;margin:12px 0 4px;font-size:14px}#modal input,#modal textarea{width:100%;border-radius:10px;padding:10px 12px}.py{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.py button{border-width:1.5px;border-radius:10px;padding:12px;font-weight:500}.py button.on{border-color:var(--r);background:var(--t)}.ss{margin:20px 0}.st{display:flex;gap:14px;align-items:center;padding:10px 0;color:var(--m)}.st b{width:30px;height:30px;border-radius:50%;border:2px solid var(--l);display:grid;place-items:center;font-size:14px}.st.done{color:var(--i)}.st.done b{background:var(--g);border-color:var(--g);color:#fff}.st.cur b{border-color:var(--r);color:var(--r)}#toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,80px);background:var(--i);color:var(--b);padding:12px 22px;border-radius:12px;z-index:80;transition:.25s;opacity:0}#toast.on{transform:translate(-50%,0);opacity:1}#cnt{background:var(--y);color:#241D14;border-radius:99px;padding:0 8px;margin-left:6px;font-size:13px}</style></head><body><header><div class="logo"><span>🍛</span>Daawat</div><button class="lo" onclick="toast('Location picker is a demo')"><small>Deliver to</small>Connaught Place, New Delhi ▾</button><div class="sr"><span>🔍</span><input id="q" placeholder="Search dishes, e.g. paneer, biryani, momos" oninput="S.q=this.value;rn()"></div><button class="bt" onclick="oc()">Cart<span id="cnt">0</span></button></header><section class="ho"><div class="tx"><h1>Hot food at your door in 30 minutes.</h1><p>Order from 8 kitchen favourites, from smoky tandoor to street-side chaat. Free delivery above ₹399.</p><button class="bt" onclick="$('menu').scrollIntoView({behavior:'smooth'})">Browse the menu</button><span class="pr">Use DAAWAT50 for ₹50 off</span></div><div class="ar">🍲</div></section><div class="br" id="menu"><div id="chips" style="display:flex;gap:10px"></div><div class="sp"></div><div class="vg" id="veg" onclick="S.veg=!S.veg;rn()"><i></i>Veg only</div><select onchange="S.sort=this.value;rn()"><option value="pop">Most popular</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="rt">Top rated</option></select></div><div class="sc"><h2 id="ttl">All dishes</h2><span id="num"></span></div><div id="grid"></div><footer><div><div class="logo" style="color:var(--y)">🍛 Daawat</div><p>Demo site. No real orders or payments.</p></div></footer><div id="veil" onclick="ca()"></div><aside id="drawer"><div class="dh"><h2>Your cart</h2><button class="x" onclick="ca()">✕</button></div><div id="items"></div><div id="bill"></div></aside><div id="modal"></div><div id="toast"></div>
 <script>
 const D=[
-["Butter Chicken","North Indian","🍗",349,0,4.7,30,"Charcoal-grilled chicken in a silky tomato and butter gravy.","Bestseller","#FFD9B8"],
-["Paneer Tikka","Starters","🧀",289,1,4.5,25,"Cottage cheese marinated in yoghurt and spices, cooked in a tandoor.","","#FFE7A3"],
-["Hyderabadi Biryani","Biryani","🍚",379,0,4.8,40,"Slow-cooked basmati layered with spiced chicken and saffron.","Bestseller","#FFE0A0"],
-["Veg Dum Biryani","Biryani","🥘",299,1,4.4,35,"Seasonal vegetables and fragrant rice sealed and steamed.","","#E5F0C8"],
-["Masala Dosa","South Indian","🌯",159,1,4.6,20,"Crisp rice crepe with spiced potato, sambar and two chutneys.","Quick","#FFEBC2"],
-["Chole Bhature","North Indian","🫓",189,1,4.5,25,"Tangy chickpea curry with two fluffy fried breads.","","#FFD6C2"],
-["Pani Puri","Street food","🥟",99,1,4.7,15,"Six crisp shells with spiced mint water and tamarind chutney.","Quick","#D9EFD0"],
-["Steamed Momos","Street food","🥟",149,0,4.3,20,"Eight chicken momos with fiery red chutney.","","#F2E3D2"],
-["Dal Makhani","North Indian","🍲",259,1,4.6,30,"Black lentils simmered overnight with cream and butter.","","#F5D3B3"],
-["Garlic Naan","Breads","🫓",69,1,4.5,15,"Soft tandoor bread brushed with garlic butter.","","#FFF0C4"],
-["Chicken Seekh Kebab","Starters","🍢",329,0,4.6,25,"Minced chicken skewers with herbs, grilled over coals.","","#FFD0C0"],
-["Idli Sambar","South Indian","🍥",119,1,4.4,15,"Four steamed rice cakes with lentil stew and coconut chutney.","","#EEF1D6"],
-["Margherita Pizza","Pizza","🍕",319,1,4.2,30,"Wood-fired base, fresh mozzarella and basil.","","#FFD7C9"],
+["Butter Chicken","North Indian","🍗",349,0,4.7,30,"Grilled chicken in a silky tomato and butter gravy.","Bestseller","#FFD9B8"],
+["Paneer Tikka","Starters","🧀",289,1,4.5,25,"Cottage cheese marinated in spices and grilled in a tandoor.","","#FFE7A3"],
+["Hyderabadi Biryani","Biryani","🍚",379,0,4.8,40,"Slow-cooked basmati layered with spiced chicken.","Bestseller","#FFE0A0"],
+["Masala Dosa","South Indian","🌯",159,1,4.6,20,"Crisp rice crepe with spiced potato and sambar.","Quick","#FFEBC2"],
+["Pani Puri","Street food","🥟",99,1,4.7,15,"Six crisp shells with spiced mint water.","Quick","#D9EFD0"],
 ["Gulab Jamun","Desserts","🍡",129,1,4.8,10,"Four warm milk dumplings soaked in cardamom syrup.","Sweet pick","#FFD8B0"],
 ["Mango Lassi","Drinks","🥭",109,1,4.6,10,"Thick chilled yoghurt drink with Alphonso mango.","","#FFE59A"],
 ["Masala Chai","Drinks","☕",59,1,4.7,10,"Ginger and cardamom tea, brewed strong.","","#F0DCC2"]
-].map((a,i)=>({id:i,n:a[0],c:a[1],e:a[2],p:a[3],v:a[4],r:a[5],t:a[6],d:a[7],tag:a[8],bg:a[9]}));
-const cats=["All",...new Set(D.map(x=>x.c))];
-const state={cat:"All",q:"",veg:false,sort:"pop",cart:{},promo:false,pay:"UPI"};
-const $=id=>document.getElementById(id), inr=n=>"₹"+n;
-function list(){let l=D.filter(x=>(state.cat=="All"||x.c==state.cat)&&(!state.veg||x.v)&&x.n.toLowerCase().includes(state.q.toLowerCase().trim()));
- if(state.sort=="lo")l.sort((a,b)=>a.p-b.p);if(state.sort=="hi")l.sort((a,b)=>b.p-a.p);if(state.sort=="rt")l.sort((a,b)=>b.r-a.r);return l}
-function ctrl(x){const q=state.cart[x.id];return q?`<div class="qty"><button onclick="chg(${x.id},-1)">−</button><span>${q}</span><button onclick="chg(${x.id},1)">+</button></div>`:`<button class="add" onclick="chg(${x.id},1)">Add</button>`}
-function render(){
- $("chips").innerHTML=cats.map(c=>`<button class="chip ${c==state.cat?'on':''}" onclick="state.cat='${c}';render()">${c}</button>`).join("");
- $("veg").classList.toggle("on",state.veg);
- const l=list();$("ttl").textContent=state.cat=="All"?"All dishes":state.cat;$("num").textContent=l.length+" items";
- $("grid").innerHTML=l.length?l.map(x=>`<div class="card"><div class="pic" style="background:${x.bg}">${x.e}${x.tag?`<span class="tag">${x.tag}</span>`:''}<span class="dot ${x.v?'':'nv'}"></span></div><div class="body"><h3>${x.n}</h3><p>${x.d}</p><div class="meta"><b>★ ${x.r}</b><span>${x.t} min</span></div><div class="row"><span class="price">${inr(x.p)}</span>${ctrl(x)}</div></div></div>`).join(""):`<div class="empty"><h3>No dishes match your search</h3><p>Clear the search box or turn off Veg only.</p></div>`;
- cart()}
-function chg(id,d){state.cart[id]=(state.cart[id]||0)+d;if(state.cart[id]<=0)delete state.cart[id];if(d>0&&state.cart[id]==1)toast(D[id].n+" added to cart");render()}
-function totals(){let sub=0,n=0;for(const id in state.cart){sub+=D[id].p*state.cart[id];n+=state.cart[id]}
- const del=sub==0||sub>=399?0:40,disc=state.promo&&sub>=200?50:0,tax=Math.round((sub-disc)*.05);return{sub,n,del,disc,tax,tot:sub-disc+del+tax}}
-function cart(){const t=totals();$("cnt").textContent=t.n;
- const ids=Object.keys(state.cart);
- $("items").innerHTML=ids.length?ids.map(id=>{const x=D[id],q=state.cart[id];return `<div class="it"><div class="e" style="background:${x.bg}">${x.e}</div><div class="n"><b>${x.n}</b><br><small>${inr(x.p)} each</small></div><div class="qty sm"><button onclick="chg(${id},-1)">−</button><span>${q}</span><button onclick="chg(${id},1)">+</button></div><b style="width:60px;text-align:right">${inr(x.p*q)}</b></div>`}).join(""):`<div class="empty" style="padding:80px 0"><div style="font-size:60px">🛒</div><h3>Your cart is empty</h3><p>Add a dish from the menu to get started.</p></div>`;
- $("bill").innerHTML=ids.length?`<div class="cp"><input id="pc" placeholder="Promo code" value="${state.promo?'DAAWAT50':''}"><button class="btn ghost" onclick="promo()">Apply</button></div><div class="msg" id="pm" style="color:var(--green)">${state.promo?(t.disc?'DAAWAT50 applied, you save ₹50':'Add items worth ₹200 to use this code'):''}</div><div><span>Subtotal</span><span>${inr(t.sub)}</span></div><div><span>Delivery</span><span>${t.del?inr(t.del):'Free'}</span></div>${t.disc?`<div style="color:var(--green)"><span>Discount</span><span>−${inr(t.disc)}</span></div>`:''}<div><span>Taxes (5%)</span><span>${inr(t.tax)}</span></div><div class="tot"><span>To pay</span><span>${inr(t.tot)}</span></div><button class="btn" style="width:100%" onclick="checkout()">Continue to checkout</button>`:"";}
-function promo(){const v=$("pc").value.trim().toUpperCase();if(v=="DAAWAT50"){state.promo=true;cart()}else{state.promo=false;cart();$("pm").style.color="#B3261E";$("pm").textContent="That code isn’t valid. Try DAAWAT50."}}
-function openCart(){$("veil").classList.add("on");$("drawer").classList.add("on")}
-function closeAll(){["veil","drawer","modal"].forEach(i=>$(i).classList.remove("on"))}
-function checkout(){const t=totals();$("drawer").classList.remove("on");$("modal").classList.add("on");
- $("modal").innerHTML=`<h2>Checkout</h2><label>Full name</label><input id="nm" value="Aarav Sharma"><label>Phone</label><input id="ph" value="98765 43210"><label>Delivery address</label><textarea id="ad" rows="2">12, Barakhamba Road, Connaught Place, New Delhi 110001</textarea><label>Payment</label><div class="pay">${["UPI","Card","Cash"].map(p=>`<button class="${p==state.pay?'on':''}" onclick="state.pay='${p}';checkout()">${p}</button>`).join("")}</div><button class="btn" style="width:100%;margin-top:22px" onclick="place()">Place order · ${inr(t.tot)}</button><button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeAll()">Back to menu</button>`}
-function place(){if(!$("nm").value.trim()||!$("ad").value.trim()){toast("Enter your name and delivery address");return}
- const name=$("nm").value.split(" ")[0],t=totals(),no="DW"+Math.floor(10000+Math.random()*89999);state.cart={};state.promo=false;render();
- const S=["Order confirmed","Kitchen is preparing your food","Rider picked up your order","Delivered. Enjoy your meal!"];let i=0;
- const draw=()=>{$("modal").innerHTML=`<h2>Thanks, ${name}!</h2><p style="color:var(--mute)">Order #${no} · ${inr(t.tot)} · ${state.pay}</p><div class="steps">${S.map((s,k)=>`<div class="st ${k<i?'done':k==i?'cur':''}"><b>${k<i||i==3&&k==3?'✓':k+1}</b>${s}</div>`).join("")}</div><button class="btn" style="width:100%" onclick="closeAll()">Order something else</button>`};
- draw();const iv=setInterval(()=>{if(++i>3){clearInterval(iv);i=3}draw();if(i==3)clearInterval(iv)},2500)}
-let tt;function toast(m){const e=$("toast");e.textContent=m;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),1800)}
-function toggleTheme(){const r=document.documentElement,d=getComputedStyle(r).getPropertyValue('--bg').trim()=="#171310";r.dataset.theme=d?"light":"dark"}
-render();
+].map((a,i)=>({id:i,n:a[0],c:a[1],e:a[2],p:a[3],v:a[4],r:a[5],t:a[6],d:a[7],g:a[8],b:a[9]}));
+const cs=["All",...new Set(D.map(x=>x.c))],S={cat:"All",q:"",veg:0,sort:"pop",cart:{},promo:0,pay:"UPI"},$=i=>document.getElementById(i),f=n=>"₹"+n;
+const ct=x=>{const q=S.cart[x.id];return q?`<div class="qy"><button onclick="cg(${x.id},-1)">−</button><span>${q}</span><button onclick="cg(${x.id},1)">+</button></div>`:`<button class="ab" onclick="cg(${x.id},1)">Add</button>`}
+function rn(){
+$("chips").innerHTML=cs.map(c=>`<button class="ch ${c==S.cat?'on':''}" onclick="S.cat='${c}';rn()">${c}</button>`).join("");
+$("veg").classList.toggle("on",S.veg);
+let l=D.filter(x=>(S.cat=="All"||x.c==S.cat)&&(!S.veg||x.v)&&x.n.toLowerCase().includes(S.q.toLowerCase().trim()));
+if(S.sort=="lo")l.sort((a,b)=>a.p-b.p);if(S.sort=="hi")l.sort((a,b)=>b.p-a.p);if(S.sort=="rt")l.sort((a,b)=>b.r-a.r);
+$("ttl").textContent=S.cat=="All"?"All dishes":S.cat;$("num").textContent=l.length+" items";
+$("grid").innerHTML=l.length?l.map(x=>`<div class="cd"><div class="pi" style="background:${x.b}">${x.e}${x.g?`<span class="ta">${x.g}</span>`:''}<span class="dt ${x.v?'':'nv'}"></span></div><div class="bd"><h3>${x.n}</h3><p>${x.d}</p><div class="me"><b>★ ${x.r}</b><span>${x.t} min</span></div><div class="rw"><span class="pe">${f(x.p)}</span>${ct(x)}</div></div></div>`).join(""):`<div class="em"><h3>No dishes match your search</h3><p>Clear the search box or turn off Veg only.</p></div>`;
+cr()}
+function cg(id,d){S.cart[id]=(S.cart[id]||0)+d;if(S.cart[id]<=0)delete S.cart[id];if(d>0&&S.cart[id]==1)toast(D[id].n+" added to cart");rn()}
+function tl(){let sub=0,n=0;for(const id in S.cart){sub+=D[id].p*S.cart[id];n+=S.cart[id]}
+const del=sub==0||sub>=399?0:40,disc=S.promo&&sub>=200?50:0,tax=Math.round((sub-disc)*.05);return{sub,n,del,disc,tax,tot:sub-disc+del+tax}}
+function cr(){const t=tl(),ids=Object.keys(S.cart);$("cnt").textContent=t.n;
+$("items").innerHTML=ids.length?ids.map(id=>{const x=D[id],q=S.cart[id];return `<div class="it"><div class="e" style="background:${x.b}">${x.e}</div><div class="n"><b>${x.n}</b><br><small>${f(x.p)} each</small></div><div class="qy sm"><button onclick="cg(${id},-1)">−</button><span>${q}</span><button onclick="cg(${id},1)">+</button></div><b style="width:60px;text-align:right">${f(x.p*q)}</b></div>`}).join(""):`<div class="em" style="padding:80px 0"><div style="font-size:60px">🛒</div><h3>Your cart is empty</h3><p>Add a dish from the menu to get started.</p></div>`;
+$("bill").innerHTML=ids.length?`<div class="cp"><input id="pc" placeholder="Promo code" value="${S.promo?'DAAWAT50':''}"><button class="bt gh" onclick="promo()">Apply</button></div><div id="pm" style="color:var(--g)">${S.promo?(t.disc?'DAAWAT50 applied, you save ₹50':'Add items worth ₹200 to use this code'):''}</div><div><span>Subtotal</span><span>${f(t.sub)}</span></div><div><span>Delivery</span><span>${t.del?f(t.del):'Free'}</span></div>${t.disc?`<div style="color:var(--g)"><span>Discount</span><span>−${f(t.disc)}</span></div>`:''}<div><span>Taxes (5%)</span><span>${f(t.tax)}</span></div><div class="tt"><span>To pay</span><span>${f(t.tot)}</span></div><button class="bt" style="width:100%" onclick="co()">Continue to checkout</button>`:""}
+function promo(){S.promo=$("pc").value.trim().toUpperCase()=="DAAWAT50";cr();if(!S.promo){$("pm").style.color="#B3261E";$("pm").textContent="That code isn’t valid. Try DAAWAT50."}}
+const oc=()=>{$("veil").classList.add("on");$("drawer").classList.add("on")},ca=()=>["veil","drawer","modal"].map(i=>$(i).classList.remove("on"));
+function co(){const t=tl();$("drawer").classList.remove("on");$("modal").classList.add("on");
+$("modal").innerHTML=`<h2>Checkout</h2><label>Full name</label><input id="nm" value="Aarav Sharma"><label>Phone</label><input id="ph" value="98765 43210"><label>Delivery address</label><textarea id="ad" rows="2">12, Barakhamba Road, Connaught Place, New Delhi 110001</textarea><label>Payment</label><div class="py">${["UPI","Card","Cash"].map(p=>`<button class="${p==S.pay?'on':''}" onclick="S.pay='${p}';co()">${p}</button>`).join("")}</div><button class="bt" style="width:100%;margin-top:22px" onclick="pl()">Place order · ${f(t.tot)}</button><button class="bt gh" style="width:100%;margin-top:10px" onclick="ca()">Back to menu</button>`}
+function pl(){if(!$("nm").value.trim()||!$("ad").value.trim())return toast("Enter your name and delivery address");
+const name=$("nm").value.split(" ")[0],t=tl(),no="DW"+Math.floor(10000+Math.random()*89999),Z=["Order confirmed","Kitchen is preparing your food","Rider picked up your order","Delivered. Enjoy your meal!"];let i=0;S.cart={};S.promo=0;rn();
+const dw=()=>{$("modal").innerHTML=`<h2>Thanks, ${name}!</h2><p style="color:var(--m)">Order #${no} · ${f(t.tot)} · ${S.pay}</p><div class="ss">${Z.map((s,k)=>`<div class="st ${k<i?'done':k==i?'cur':''}"><b>${k<i||k==3&&i==3?'✓':k+1}</b>${s}</div>`).join("")}</div><button class="bt" style="width:100%" onclick="ca()">Order something else</button>`};
+dw();const iv=setInterval(()=>{i++;dw();if(i==3)clearInterval(iv)},2500)}
+let h;function toast(m){const e=$("toast");e.textContent=m;e.classList.add("on");clearTimeout(h);h=setTimeout(()=>e.classList.remove("on"),1800)}
+rn()
 </script>
 </body>
 </html>
